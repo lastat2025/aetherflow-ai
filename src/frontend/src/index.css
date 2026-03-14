@@ -1,0 +1,245 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Bricolage Grotesque";
+  src: url("/assets/fonts/BricolageGrotesque-Variable.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Outfit";
+  src: url("/assets/fonts/Outfit-Variable.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("/assets/fonts/JetBrainsMono-Variable.woff2") format("woff2");
+  font-weight: 100 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@layer base {
+  :root {
+    /* AetherFlow AI — Deep Space Dark Theme */
+    --background: 0.09 0.035 258;
+    --foreground: 0.92 0.01 258;
+    --card: 0.13 0.04 258;
+    --card-foreground: 0.92 0.01 258;
+    --popover: 0.11 0.035 258;
+    --popover-foreground: 0.92 0.01 258;
+    --primary: 0.9 0.18 196;
+    --primary-foreground: 0.08 0.05 258;
+    --secondary: 0.18 0.04 258;
+    --secondary-foreground: 0.82 0.03 258;
+    --muted: 0.16 0.035 258;
+    --muted-foreground: 0.58 0.04 258;
+    --accent: 0.9 0.18 196;
+    --accent-foreground: 0.08 0.05 258;
+    --destructive: 0.55 0.22 25;
+    --destructive-foreground: 0.98 0.01 0;
+    --border: 0.22 0.045 258;
+    --input: 0.18 0.04 258;
+    --ring: 0.9 0.18 196;
+    --radius: 0.5rem;
+
+    --chart-1: 0.9 0.18 196;
+    --chart-2: 0.72 0.15 264;
+    --chart-3: 0.7 0.18 142;
+    --chart-4: 0.75 0.18 55;
+    --chart-5: 0.6 0.22 25;
+
+    --sidebar: 0.11 0.035 258;
+    --sidebar-foreground: 0.82 0.03 258;
+    --sidebar-primary: 0.9 0.18 196;
+    --sidebar-primary-foreground: 0.08 0.05 258;
+    --sidebar-accent: 0.16 0.04 258;
+    --sidebar-accent-foreground: 0.9 0.18 196;
+    --sidebar-border: 0.2 0.04 258;
+    --sidebar-ring: 0.9 0.18 196;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    color-scheme: dark;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body;
+    background-image: radial-gradient(
+        ellipse at 15% 0%,
+        oklch(0.18 0.09 258 / 0.5) 0%,
+        transparent 55%
+      ),
+      radial-gradient(
+        ellipse at 85% 100%,
+        oklch(0.14 0.07 196 / 0.35) 0%,
+        transparent 55%
+      );
+    min-height: 100vh;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-display;
+  }
+}
+
+@layer components {
+  .glass-card {
+    background: oklch(0.13 0.04 258 / 0.75);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid oklch(0.28 0.05 258 / 0.5);
+  }
+
+  .glass-card:hover {
+    border-color: oklch(0.9 0.18 196 / 0.4);
+    box-shadow: 0 0 24px oklch(0.9 0.18 196 / 0.08);
+  }
+
+  .cyan-glow {
+    box-shadow: 0 0 24px oklch(0.9 0.18 196 / 0.35), 0 0 48px
+      oklch(0.9 0.18 196 / 0.12);
+  }
+
+  .cyan-text-glow {
+    text-shadow: 0 0 24px oklch(0.9 0.18 196 / 0.85);
+  }
+
+  .agent-glow-active {
+    box-shadow: 0 0 30px var(--agent-color, oklch(0.9 0.18 196)) / 0.35, 0 0
+      60px var(--agent-color, oklch(0.9 0.18 196)) / 0.12;
+  }
+
+  .status-available {
+    @apply text-primary bg-primary/10 border-primary/30;
+  }
+  .status-claimed {
+    @apply text-yellow-400 bg-yellow-400/10 border-yellow-400/30;
+  }
+  .status-submitted {
+    @apply text-blue-400 bg-blue-400/10 border-blue-400/30;
+  }
+  .status-approved {
+    @apply text-green-400 bg-green-400/10 border-green-400/30;
+  }
+  .status-rejected {
+    @apply text-destructive bg-destructive/10 border-destructive/30;
+  }
+
+  .difficulty-easy {
+    @apply text-green-400 bg-green-400/10 border-green-400/30;
+  }
+  .difficulty-medium {
+    @apply text-yellow-400 bg-yellow-400/10 border-yellow-400/30;
+  }
+  .difficulty-hard {
+    @apply text-red-400 bg-red-400/10 border-red-400/30;
+  }
+}
+
+/* ---------- animations ---------- */
+@keyframes pulse-cyan {
+  0%,
+  100% {
+    opacity: 1;
+    box-shadow: 0 0 8px oklch(0.9 0.18 196 / 0.9);
+  }
+  50% {
+    opacity: 0.35;
+    box-shadow: 0 0 2px oklch(0.9 0.18 196 / 0.3);
+  }
+}
+
+@keyframes grid-scroll {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(60px);
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes scanline {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 0 100%;
+  }
+}
+
+.ai-pulse {
+  animation: pulse-cyan 1.5s ease-in-out infinite;
+}
+.floating {
+  animation: float 4s ease-in-out infinite;
+}
+
+.scrollbar-thin {
+  scrollbar-width: thin;
+  scrollbar-color: oklch(0.28 0.05 258) transparent;
+}
+.scrollbar-thin::-webkit-scrollbar {
+  width: 4px;
+}
+.scrollbar-thin::-webkit-scrollbar-track {
+  background: transparent;
+}
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background-color: oklch(0.28 0.05 258);
+  border-radius: 2px;
+}
+
+/* Animated grid background */
+.grid-bg {
+  background-image: linear-gradient(
+      oklch(0.9 0.18 196 / 0.06) 1px,
+      transparent 1px
+    ), linear-gradient(90deg, oklch(0.9 0.18 196 / 0.06) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+/* Agent accent colors (CSS vars used inline) */
+.agent-purple {
+  --agent-glow: oklch(0.7 0.22 295);
+}
+.agent-blue {
+  --agent-glow: oklch(0.65 0.18 245);
+}
+.agent-green {
+  --agent-glow: oklch(0.72 0.2 142);
+}
+.agent-orange {
+  --agent-glow: oklch(0.75 0.18 55);
+}
+.agent-cyan {
+  --agent-glow: oklch(0.9 0.18 196);
+}
